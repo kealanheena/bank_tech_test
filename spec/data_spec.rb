@@ -21,7 +21,11 @@ describe BankData do
     end
 
     it 'should record the date of the transaction' do
-      expect(@bank_data.deposit(10)).to eq(@time)
+      expect(@bank_data.deposit(10)).to include(time: @time)
+    end
+
+    it 'should record the date of the transaction' do
+      expect(@bank_data.deposit(10)).to include(deposit: 10)
     end
   end
 

@@ -8,7 +8,7 @@ class BankData
   end
 
   def deposit(amount)
-    Time.now.strftime('%d/%m/%Y')
+    { time: Time.now.strftime('%d/%m/%Y'),
+      deposit: amount }
   end
-
 end
