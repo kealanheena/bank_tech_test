@@ -13,13 +13,12 @@ describe BankData do
     end
   end
 
+  before :each do
+    @bank_data = BankData.new
+    @time = Time.now.strftime('%d/%m/%Y')
+  end
+
   describe '#deposit' do
-    before :all do
-      @bank_data = BankData.new
-      @time = Time.now.strftime('%d/%m/%Y')
-
-    end
-
     it 'should record the date of the transaction' do
       expect(@bank_data.deposit(10)).to include(time: @time)
     end
@@ -33,19 +32,9 @@ describe BankData do
     end
   end
 
-  # describe '#return' do
-
-  #   it 'returns the date of the transaction' do
-  #     expect(@data.return).to include(date: @time)
-  #   end
-
-  #   it 'returns the amount of money deposited' do
-  #     expect(@data.return).to include(deposit: 100)
-  #   end
-
-  #   it 'returns the amount of money withdrawn' do
-  #     expect(@data.return).to include(withdrawl: 100)
-  #   end
-  # end
-
+  describe '#withdrawl' do
+    it 'should record the date of the transaction' do
+      expect(@bank_data.withdrawl).to eq @time
+    end
+  end
 end

@@ -13,4 +13,8 @@ class BankData
       withdrawl: format('%.2f', 0),
       balance: format('%.2f', (@balance.to_f + amount)) }
   end
+
+  def withdrawl
+    Time.now.strftime('%d/%m/%Y')
+  end
 end
