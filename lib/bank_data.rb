@@ -4,14 +4,11 @@ class BankData
 
   def initialize(balance = DEFAULT_BALANCE)
     @balance = format('%.2f', balance)
+    @statement = []
   end
 
-#  @statement = {
-#   date: Time.now.strftime('%d/%m/%Y at %H:%M'),
-#   amount: money
-# }
+  def deposit(amount)
+    Time.now.strftime('%d/%m/%Y')
+  end
 
-# def return
-#   @statement
-  # end
 end
