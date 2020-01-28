@@ -1,18 +1,6 @@
 require 'bank_data'
 
 describe BankData do
-  describe '#initialize' do
-    it 'should be initialized with a default balance of 0' do
-      data = BankData.new
-      expect(data.balance).to eq 0
-    end
-
-    it 'should be able to initialized with a balance of 100' do
-      data = BankData.new(100)
-      expect(data.balance).to eq 100
-    end
-  end
-
   before :each do
     @bank_data = BankData.new
     @time = Time.now.strftime('%d/%m/%Y')
