@@ -8,16 +8,24 @@ class BankData
   end
 
   def deposit(amount)
-    { time: Time.now.strftime('%d/%m/%Y'),
-      deposit: amount,
-      withdrawl: format('%.2f', 0),
-      balance: format('%.2f', (@balance.to_f + amount)) }
+    @statement << { time: Time.now.strftime('%d/%m/%Y'),
+                    deposit: amount,
+                    withdrawl: format('%.2f', 0),
+                    balance: format('%.2f', (@balance.to_f + amount)) }
   end
 
   def withdrawl(amount)
-    { time: Time.now.strftime('%d/%m/%Y'),
-      deposit: format('%.2f', 0),
-      withdrawl: amount,
-      balance: format('%.2f', (@balance.to_f - amount)) }
+    @statement << { time: Time.now.strftime('%d/%m/%Y'),
+                    deposit: format('%.2f', 0),
+                    withdrawl: amount,
+                    balance: format('%.2f', (@balance.to_f - amount)) }
+  end
+
+  def display
+    puts 'date || credit || debit || balance'
+    @statement.each { |transaction|
+      puts "#{transaction[:time]} || #{transaction[:deposit]} ||" +
+           " #{transaction[:withdrawl]} || #{transaction[:balance]}"
+    }
   end
 end
