@@ -8,17 +8,17 @@ class BankData
   end
 
   def deposit(amount)
-    @statement << { time: Time.now.strftime('%d/%m/%Y'),
-                    deposit: amount,
-                    withdrawl: format('%.2f', 0),
-                    balance: format('%.2f', (@balance.to_f + amount)) }
+    @statement.unshift({ time: Time.now.strftime('%d/%m/%Y'),
+                         deposit: amount,
+                         withdrawl: format('%.2f', 0),
+                         balance: format('%.2f', (@balance.to_f + amount)) })
   end
 
   def withdrawl(amount)
-    @statement << { time: Time.now.strftime('%d/%m/%Y'),
-                    deposit: format('%.2f', 0),
-                    withdrawl: amount,
-                    balance: format('%.2f', (@balance.to_f - amount)) }
+    @statement.unshift({ time: Time.now.strftime('%d/%m/%Y'),
+                         deposit: format('%.2f', 0),
+                         withdrawl: amount,
+                         balance: format('%.2f', (@balance.to_f - amount)) })
   end
 
   def display
