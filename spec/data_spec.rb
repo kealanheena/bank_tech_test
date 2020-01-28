@@ -28,5 +28,9 @@ describe BankData do
     it 'should record the amount withdrawn' do
       expect(@bank_data.withdrawl(10)).to include(withdrawl: 10)
     end
+
+    it 'should subtract the withdrawl from the balance' do
+      expect(@bank_data.withdrawl(10)).to include(balance: '-10.00')
+    end
   end
 end
