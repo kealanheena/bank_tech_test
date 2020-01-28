@@ -12,7 +12,7 @@ describe BankData do
     end
 
     it 'should record the amount deposited' do
-      expect(@bank_data.deposit(10).first).to include(deposit: 10)
+      expect(@bank_data.deposit(10).first).to include(deposit: '10.00')
     end
 
     it 'should add the deposit to the balance' do
@@ -26,7 +26,7 @@ describe BankData do
     end
 
     it 'should record the amount withdrawn' do
-      expect(@bank_data.withdrawl(10).first).to include(withdrawl: 10)
+      expect(@bank_data.withdrawl(10).first).to include(withdrawl: '10.00')
     end
 
     it 'should subtract the withdrawl from the balance' do
@@ -37,7 +37,7 @@ describe BankData do
   describe '#display' do
     it 'should show all transactions in a grid format' do
       @bank_data.deposit(10)
-      expect { @bank_data.display }.to output("date || credit || debit || balance\n#{@time} || 10 || 0.00 || 10.00\n").to_stdout
+      expect { @bank_data.display }.to output("date || credit || debit || balance\n#{@time} || 10.00 || 0.00 || 10.00\n").to_stdout
     end
   end
 end
