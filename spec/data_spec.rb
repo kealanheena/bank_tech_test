@@ -4,12 +4,12 @@ describe BankData do
   describe '#initialize' do
     it 'should be initialized with a default balance of 0' do
       data = BankData.new
-      expect(data.balance).to eq format('%.2f', 0)
+      expect(data.balance).to eq 0
     end
 
     it 'should be able to initialized with a balance of 100' do
       data = BankData.new(100)
-      expect(data.balance).to eq format('%.2f', 100)
+      expect(data.balance).to eq 100
     end
   end
 
@@ -26,6 +26,10 @@ describe BankData do
 
     it 'should record the date of the transaction' do
       expect(@bank_data.deposit(10)).to include(deposit: 10)
+    end
+
+    it 'should add the deposit to the balance' do
+      expect(@bank_data.deposit(10)).to include(balance: '10.00')
     end
   end
 

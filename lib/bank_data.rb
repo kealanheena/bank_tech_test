@@ -3,12 +3,14 @@ class BankData
   attr_reader :balance
 
   def initialize(balance = DEFAULT_BALANCE)
-    @balance = format('%.2f', balance)
+    @balance = balance
     @statement = []
   end
 
   def deposit(amount)
     { time: Time.now.strftime('%d/%m/%Y'),
-      deposit: amount }
+      deposit: amount,
+      withdrawl: format('%.2f', 0),
+      balance: format('%.2f', (@balance.to_f + amount)) }
   end
 end
