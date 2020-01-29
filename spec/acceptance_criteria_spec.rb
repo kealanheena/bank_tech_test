@@ -20,8 +20,8 @@ describe 'acceptance_critiria' do
 
   it 'should pass the acceptance critiria defined in the README.md' do
     expect { @data.display }.to output("date || credit || debit || balance" \
-                                            "\n14/01/2012 || 0.00 || 500.00 || 2500.00" \
-                                            "\n13/01/2012 || 2000.00 || 0.00 || 3000.00" \
-                                            "\n10/01/2012 || 1000.00 || 0.00 || 1000.00\n").to_stdout
+                                       "\n14/01/2012 || 0.00 || 500.00 || 2500.00" \
+                                       "\n13/01/2012 || 2000.00 || 0.00 || 3000.00" \
+                                       "\n10/01/2012 || 1000.00 || 0.00 || 1000.00\n").to_stdout
   end
 end
