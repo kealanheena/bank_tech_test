@@ -17,5 +17,10 @@ describe Transaction do
       @transaction.deposit(100)
       expect(@transaction.withdraw(10)).to eq 90
     end
+
+    it 'should throw an error if a withdrawal would reduce your balance to below 0' do
+      @transaction.deposit(10)
+      expect{@transaction.withdraw(11)}.to raise_error("insufficient funds")
+    end
   end
 end

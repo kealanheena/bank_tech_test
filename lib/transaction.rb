@@ -10,6 +10,7 @@ class Transaction
   end
 
   def withdraw(amount)
-    @balance -= amount
+    raise "insufficient funds" if (@balance -= amount) < 0
+    @balance
   end 
 end
