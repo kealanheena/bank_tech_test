@@ -34,6 +34,12 @@ describe BankData do
     end
   end
 
+  describe '#store_data' do
+    it 'should record the date of the transaction' do
+      expect(@bank_data.store_data).to eq @time
+    end
+  end
+
   describe '#display' do
     it 'should show all transactions in a grid format' do
       @bank_data.deposit(10)

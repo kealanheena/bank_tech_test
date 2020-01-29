@@ -21,6 +21,10 @@ class BankData
                          balance: format('%.2f', (@balance = @balance.to_f - amount)) })
   end
 
+  def store_data
+    Time.now.strftime('%d/%m/%Y')
+  end
+
   def display
     puts 'date || credit || debit || balance'
     @statement.each { |transaction|
