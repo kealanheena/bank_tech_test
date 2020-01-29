@@ -46,6 +46,10 @@ describe BankData do
     it 'should store the amount deposited' do
       expect(@bank_data.store_data(10, 'withdrawal')).to include(debit: 10)
     end
+
+    it 'should store the current balance' do
+      expect(@bank_data.store_data(100, 'deposit')).to include(balance: 100)
+    end
   end
 
   describe '#display' do

@@ -26,7 +26,7 @@ class BankData
   def store_data(amount, transaction_type)
     @transaction = Transaction.new
     if transaction_type == 'deposit'
-      { time: @transaction.time, credit: amount, debit: 0}
+      { time: @transaction.time, credit: amount, debit: 0, balance: @transaction.deposit(amount)}
     else
       { time: @transaction.time, credit: 0, debit: amount}
     end
