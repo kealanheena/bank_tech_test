@@ -21,8 +21,9 @@ class BankData
                          balance: format('%.2f', (@balance = @balance.to_f - amount)) })
   end
 
-  def store_data
-    Time.now.strftime('%d/%m/%Y')
+  def store_data(amount)
+    { time: Time.now.strftime('%d/%m/%Y'), deposit: amount }
+    
   end
 
   def display
