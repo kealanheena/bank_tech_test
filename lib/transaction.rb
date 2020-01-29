@@ -1,19 +1,17 @@
 class Transaction
-  DEFALT_BALANCE = 0
   attr_reader :time
 
   def initialize
-    @balance = DEFALT_BALANCE
     @time = Time.now.strftime('%d/%m/%Y')
   end
 
-  def deposit(amount)
-    @balance += amount
+  def deposit(amount, balance)
+    balance + amount
   end
 
-  def withdraw(amount)
-    raise 'insufficient funds' if (@balance -= amount).negative?
+  def withdraw(amount, balance)
+    raise 'insufficient funds' if (balance -= amount).negative?
 
-    @balance
+    balance
   end 
 end

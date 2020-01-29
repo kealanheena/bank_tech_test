@@ -6,15 +6,15 @@ describe 'acceptance_critiria' do
     @data = BankData.new
 
     Timecop.freeze(2012, 01, 10) do
-      @data.deposit(1000)
+      @data.store_data(1000, 'deposit')
     end
 
     Timecop.freeze(2012, 01, 13) do
-      @data.deposit(2000)
+      @data.store_data(2000, 'deposit')
     end
 
     Timecop.freeze(2012, 01, 14) do
-      @data.withdrawl(500)
+      @data.store_data(500, 'withdraw')
     end
   end
 

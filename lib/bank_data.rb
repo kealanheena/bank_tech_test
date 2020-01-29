@@ -9,34 +9,22 @@ class BankData
     @statement = []
   end
 
-  def deposit(amount)
-    @statement.unshift({ time: Time.now.strftime('%d/%m/%Y'),
-                         deposit: format('%.2f', amount),
-                         withdrawl: format('%.2f', 0),
-                         balance: format('%.2f', (@balance = @balance.to_f + amount)) })
-  end
-
-  def withdrawl(amount)
-    @statement.unshift({ time: Time.now.strftime('%d/%m/%Y'),
-                         deposit: format('%.2f', 0),
-                         withdrawl: format('%.2f', amount),
-                         balance: format('%.2f', (@balance = @balance.to_f - amount)) })
-  end
-
   def store_data(amount, transaction_type)
     @transaction = Transaction.new
     if transaction_type == 'deposit'
-      { time: @transaction.time, credit: amount, debit: 0, balance: @transaction.deposit(amount)}
+      @statement.unshift({ time: @transaction.time, credit: amount, debit: 0, 
+        balance: @balance = @transaction.deposit(amount, @balance) })
     else
-      { time: @transaction.time, credit: 0, debit: amount}
+      @statement.unshift({ time: @transaction.time, credit: 0, debit: amount, 
+        balance: @balance = @transaction.withdraw(amount, @balance) })
     end
   end
 
   def display
     puts 'date || credit || debit || balance'
     @statement.each { |transaction|
-      puts "#{transaction[:time]} || #{transaction[:deposit]} ||" +
-           " #{transaction[:withdrawl]} || #{transaction[:balance]}"
+      puts "#{transaction[:time]} || #{'%.2f' % transaction[:credit]} ||" +
+           " #{'%.2f' % transaction[:debit]} || #{'%.2f' % transaction[:balance]}"
     }
   end
 end
