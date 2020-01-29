@@ -1,3 +1,5 @@
+require_relative 'transaction'
+
 class BankData
   DEFAULT_BALANCE = 0
   attr_reader :balance
@@ -21,9 +23,13 @@ class BankData
                          balance: format('%.2f', (@balance = @balance.to_f - amount)) })
   end
 
-  def store_data(amount)
-    { time: Time.now.strftime('%d/%m/%Y'), deposit: amount }
-    
+  def store_data(amount, transaction_type)
+    @transaction = Transaction.new
+    if transaction_type == 'deposit'
+      { time: @transaction.time, credit: amount, debit: 0}
+    else
+      { time: @transaction.time, credit: 0, debit: amount}
+    end
   end
 
   def display

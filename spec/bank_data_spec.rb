@@ -36,11 +36,15 @@ describe BankData do
 
   describe '#store_data' do
     it 'should record the date of the transaction' do
-      expect(@bank_data.store_data(0)).to include(time: @time)
+      expect(@bank_data.store_data(0, 'deposit')).to include(time: @time)
     end
 
     it 'should store the amount deposited' do
-      expect(@bank_data.store_data(10)).to include(deposit: 10)
+      expect(@bank_data.store_data(10, 'deposit')).to include(credit: 10)
+    end
+
+    it 'should store the amount deposited' do
+      expect(@bank_data.store_data(10, 'withdrawal')).to include(debit: 10)
     end
   end
 
