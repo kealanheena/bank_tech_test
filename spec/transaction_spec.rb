@@ -11,4 +11,11 @@ describe Transaction do
       expect(@transaction.deposit(100)).to eq 100
     end
   end
+
+  describe '#deposit' do
+    it 'should subtract money from your balance' do
+      @transaction.deposit(100)
+      expect(@transaction.withdraw(10)).to eq 90
+    end
+  end
 end
