@@ -8,7 +8,7 @@ describe Account do
 
   describe '#deposit' do
     it 'should record the date of the transaction' do
-      expect(@account.deposit(10).first).to include(time: @time)
+      expect(@account.deposit(10).first).to include(date: @time)
     end
 
     it 'should store the amount deposited' do

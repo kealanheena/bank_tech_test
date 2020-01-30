@@ -1,10 +1,10 @@
 class Transaction
-  attr_reader :time
+  attr_reader :date
 
   def initialize(amount, balance)
     @balance = balance
     @amount = amount
-    @time = Time.now.strftime('%d/%m/%Y')
+    @date = Time.now.strftime('%d/%m/%Y')
   end
 
   def deposit
