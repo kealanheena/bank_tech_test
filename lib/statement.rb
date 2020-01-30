@@ -1,10 +1,19 @@
 class Statement
 
+  def initialize
+    @transactions = []
+  end
+
   def show
-    'date || credit || debit || balance\n'
+    statement = 'date || credit || debit || balance\n'
+    @transactions.map { |transaction|
+      statement << ("#{transaction[:date]} || #{'%.2f' % transaction[:credit]} ||" +
+                    " #{'%.2f' % transaction[:debit]} || #{'%.2f' % transaction[:balance]}\\n")
+    }
+    statement
   end
 
   def add(date, credit, debit, balance)
-    { date: date, credit: credit, debit: debit, balance: balance}
+    @transactions.unshift({ date: date, credit: credit, debit: debit, balance: balance })
   end
 end
