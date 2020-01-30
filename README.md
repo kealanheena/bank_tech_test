@@ -22,7 +22,6 @@ I would like to be able to print a bank statement
 ```
 
 ![GitHub Logo](/acceptance_critiria.png)
-Format: ![Alt Text](url)
 
 ## Tests
 
