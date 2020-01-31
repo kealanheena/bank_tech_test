@@ -5,9 +5,9 @@ class Account
   DEFAULT_BALANCE = 0
   attr_reader :balance
 
-  def initialize(balance = DEFAULT_BALANCE)
-    @balance = balance
-    @statement = Statement.new
+  def initialize(statement = Statement.new)
+    @balance = DEFAULT_BALANCE
+    @statement = statement
   end
 
   def withdraw(amount)
