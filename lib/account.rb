@@ -1,4 +1,5 @@
 require_relative 'transaction'
+require_relative 'statement'
 
 class Account
   DEFAULT_BALANCE = 0
@@ -6,26 +7,20 @@ class Account
 
   def initialize(balance = DEFAULT_BALANCE)
     @balance = balance
-    @statement = []
+    @statement = Statement.new
   end
 
   def withdraw(amount)
     transaction = Transaction.new(amount, @balance)
-    @statement.unshift({ date: transaction.date, credit: 0, 
-                         debit: amount, balance: @balance = transaction.withdraw })
+    @statement.add(transaction.date, 0, amount, @balance = transaction.withdraw)
   end
 
   def deposit(amount)
     transaction = Transaction.new(amount, @balance)
-    @statement.unshift({ date: transaction.date, credit: amount, 
-                         debit: 0, balance: @balance = transaction.deposit })
+    @statement.add(transaction.date, amount, 0, @balance = transaction.deposit)
   end
 
   def display
-    puts 'date || credit || debit || balance'
-    @statement.each { |transaction|
-      puts "#{transaction[:date]} || #{'%.2f' % transaction[:credit]} ||" +
-           " #{'%.2f' % transaction[:debit]} || #{'%.2f' % transaction[:balance]}"
-    }
+    print @statement.show
   end
 end

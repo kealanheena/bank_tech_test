@@ -6,9 +6,9 @@ class Statement
 
   def show
     statement = 'date || credit || debit || balance\n'
-    @transactions.map { |transaction|
-      statement << ("#{transaction[:date]} || #{'%.2f' % transaction[:credit]} ||" +
-                    " #{'%.2f' % transaction[:debit]} || #{'%.2f' % transaction[:balance]}\\n")
+    @transactions.each { |transaction|
+      statement << ("#{transaction[:date]} || #{'%.2f' % transaction[:credit]} ||" \
+                    " #{'%.2f' % transaction[:debit]} || #{'%.2f' % transaction[:balance]}" + '\n')
     }
     statement
   end
