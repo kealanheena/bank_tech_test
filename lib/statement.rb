@@ -5,10 +5,10 @@ class Statement
   end
 
   def show
-    statement = 'date || credit || debit || balance\n'
+    statement = "date || credit || debit || balance\n"
     @transactions.each { |transaction|
       statement << ("#{transaction[:date]} || #{'%.2f' % transaction[:credit]} ||" \
-                    " #{'%.2f' % transaction[:debit]} || #{'%.2f' % transaction[:balance]}" + '\n')
+                    " #{'%.2f' % transaction[:debit]} || #{'%.2f' % transaction[:balance]}\n")
     }
     statement
   end

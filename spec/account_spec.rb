@@ -34,12 +34,12 @@ describe Account do
 
   describe '#display' do
     it 'should show all transactions in a grid format' do
-      expect { @account.display }.to output('date || credit || debit || balance\n').to_stdout
+      expect { @account.display }.to output("date || credit || debit || balance\n").to_stdout
     end
 
     it 'should show all transactions in a grid format' do
       @account.deposit(10)
-      expect { @account.display }.to output('date || credit || debit || balance\n' + @time + ' || 10.00 || 0.00 || 10.00\n').to_stdout
+      expect { @account.display }.to output("date || credit || debit || balance\n#{@time} || 10.00 || 0.00 || 10.00\n").to_stdout
     end
   end
 end

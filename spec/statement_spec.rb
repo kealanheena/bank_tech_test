@@ -8,12 +8,12 @@ describe Statement do
 
   describe '#show' do
     it 'should show the header of the statement with a line break at the end' do
-      expect(@statement.show).to include 'date || credit || debit || balance\n'
+      expect(@statement.show).to include "date || credit || debit || balance\n"
     end
 
     it 'should show the transactions added' do
       @statement.add('30/1/2020', 10, 0, 10)
-      expect(@statement.show).to eq 'date || credit || debit || balance\n30/1/2020 || 10.00 || 0.00 || 10.00\n'
+      expect(@statement.show).to eq "date || credit || debit || balance\n30/1/2020 || 10.00 || 0.00 || 10.00\n"
     end 
   end
 
